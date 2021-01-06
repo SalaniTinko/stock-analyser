@@ -1,0 +1,56 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block body %}
+<div id="fullpage-form-wrapper">
+
+  <div class="module_wrap">
+    <div class="form08_title_wrap">
+      <h3 class="form08_h3">Get Started Today<br></h3>
+      <h3 class="form08_h3">Free 7-Day Trial<br></h3>
+      <div class="form08_text">No credit card required - no risk<br></div>
+    </div>
+    <div class="form08">
+      <div class="form08_form_block w-form">
+        <form method="post" id="email-form-2" name="email-form-2" data-name="Email Form 2" class="form08_form">
+                      {% csrf_token %}
+            {{ form.non_field_errors }}
+
+          {{ form.email }}
+          {{ form.email.errors }}
+
+              {{ form.password1 }}
+           
+              {{ form.password1.errors }}
+
+
+          <input type="submit" value="Sign Up"  class="form08_button w-button">
+
+
+        </form>
+
+
+        <div class="form08_success w-form-done">
+          <div class="form_alert">
+            <div class="form_alert_wrap"><img src="/static/images/check-white.svg" width="14" alt="" class="form_alert_icon">
+              <div class="form_alert_line"></div>
+              <div class="form_alert_text white-text">Your information has been saved.</div>
+            </div><img src="/static/images/x_white.svg" width="10" alt=""></div>
+        </div>
+        <div class="form08_error w-form-fail">
+          <div class="form_error">
+            <div class="form_error_wrap"><img src="/static/images/alert-circle-white.svg" width="16" alt="" class="form_error_icon">
+              <div class="form_error_line"></div>
+              <div class="form_error_paragraph white-text">Looks like we're having trouble</div>
+            </div><img src="/static/images/x_white.svg" width="10" alt=""></div>
+        </div>
+      </div>
+    </div>
+    <div class="form08_link_wrap"><a href="{% url 'account_login' %}" class="form08_text_account">Already have an account?</a></div>
+  </div>
+
+
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,92 @@
+{% block body %}
+              <div class="section">
+                <div class="flex row w-row">
+
+                  <div class="col w-col w-col-4">
+                    <div class="card">
+                      <div style="padding:10px;margin-bottom: 10px;
+" class="card-heading">
+                        <h4 class="mb-0">{{data.stats.name}}</h4>
+                      </div>
+                      <div class="text-center"><img style="padding:10px;" src="{{data.logo}}" alt="">
+
+                      <div class="revenue-value">${{ data.price }}</div>
+                      {% if data.stats.1dchange > 0 %}
+                       <div><span class="text-green">+{{data.stats.1dchange}} ({{data.stats.1dpchange}}%)</span> Today</div>
+                      </div>
+                      {% else %}
+                         <div><span class="text-red">{{data.stats.1dchange}} ({{data.stats.1dpchange}}%)</span> Today</div>
+                      </div>
+
+                      {% endif %}
+
+
+                      <div style="margin-top:10px;" class="chart-symbols">
+                        <div class="chart-symbols-item">
+                          <div class="chart-color green"></div>
+                          <div class="chart-symbols-item-name">High</div>
+                <span class="text-green"><strong>{{data.stats.high}}</strong> </span>
+                        </div>
+                        <div class="chart-symbols-item">
+                          <div class="chart-color" style="background-color:#f64f59"></div>
+                          <div class="chart-symbols-item-name">Low</div>
+            <span class="text-red"><strong>{{data.stats.low}}</strong></span>
+                        </div>
+                      </div>
+                      {% if data.movement.earnings != None %}
+                          <div class="revenue-description hint">Earnings on {{data.movement.earnings}}</div>
+                      {%endif%}
+
+                      {% if data.movement.dividend != None %}
+                          <div class="revenue-description hint">Dividend on {{data.movement.dividend}}</div>
+                      {% endif%}
+                      
+
+                    </div>
+                  </div>
+
+
+<div class="col w-col w-col-8">
+                    <div class="card">
+                        <h4 class="mb-0">Price Trends</h4>
+                    <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+                      <div  class="align-left w-tab-menu">
+
+                        <a style="font-size:16px;" data-w-tab="Tab 1" class="switcher-tab left w-inline-block w-tab-link w--current">
+                          <div>1 Week</div>
+                        </a>
+
+                        <a style="font-size:16px;" data-w-tab="Tab 5" class="switcher-tab right w-inline-block w-tab-link">
+                          <div>1 Month</div>
+                        </a>
+
+                          <a style="font-size:16px;" data-w-tab="Tab 51" class="switcher-tab right w-inline-block w-tab-link">
+                          <div>3 Month</div>
+                        </a>
+                      </div>
+
+                      <div class="chart-tab-content w-tab-content">
+                        <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+           <img src=data:image/svg+xml;base64,{{data.1wchart|safe}}>
+
+                        </div>
+                        <div data-w-tab="Tab 5" class="w-tab-pane">
+
+            <img src=data:image/svg+xml;base64,{{data.1mchart|safe}}>
+                        </div>
+
+                                                <div data-w-tab="Tab 51" class="w-tab-pane">
+
+            <img src=data:image/svg+xml;base64,{{data.3mchart|safe}}>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+				</div>
+                </div>
+              </div>
+               </div>
+
+{% endblock %}

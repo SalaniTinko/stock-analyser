@@ -1,0 +1,52 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block body %}
+
+<div class="module_wrap">
+    <div class="form06">
+      <div class="form06_form_block w-form">
+        <form method="post" id="wf-form-FORM06" name="wf-form-FORM06" data-name="FORM06" class="form06_form">
+          <h5 class="form06_h5">Welcome Back</h5>
+
+          {% csrf_token %}
+            {{ form.non_field_errors }}
+          {{ form.login }}
+          {{ form.login.errors }}
+
+            {{ form.password }}
+          {{ form.login.errors }}
+
+
+          <input type="submit" value="Sign in" data-wait="Please wait..." class="form06_button w-button">
+
+
+          <div class="form06_account"><a href="{% url 'account_signup' %}">Don't have an account?</a> <br></div>
+          <div class="form06_account"><a href="{% url 'account_reset_password' %}">Reset Password</a> <br></div>
+
+
+          
+          <div class="form06_line"></div>
+
+        </form>
+        <div class="form06_success w-form-done">
+          <div class="form_alert">
+            <div class="form_alert_wrap"><img src="/static/images/check-white.svg" width="14" alt="" class="form_alert_icon">
+              <div class="form_alert_line"></div>
+              <div class="form_alert_text white-text">Your information has been saved.</div>
+            </div><img src="/static/images/x_white.svg" width="10" alt=""></div>
+        </div>
+        <div class="form06_error w-form-fail">
+          <div class="form_error">
+            <div class="form_error_wrap"><img src="/static/images/alert-circle-white.svg" width="16" alt="" class="form_error_icon">
+              <div class="form_error_line"></div>
+              <div class="form_error_paragraph white-text">Looks like we're having trouble</div>
+            </div><img src="/static/images/x_white.svg" width="10" alt=""></div>
+        </div>
+      </div>
+      <div class="form06_top"><img src="/static/images/icon_form.svg" alt="" class="form06_icon"></div>
+    </div>
+  </div>
+
+{% endblock %}
+

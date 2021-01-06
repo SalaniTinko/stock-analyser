@@ -1,0 +1,129 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block body %}
+
+<div class="module_wrap" style="padding:25px">
+    <h1>Stockk Analyzer</h1>
+    <link href="{% static 'css/stock.css' %}" rel="stylesheet">
+    <div class="app-main-layout-wrapper" style="padding:5px 4% 0px">
+        <div class="app-main-layout-content">
+            <div class="section" style="text-align:center">
+                <div class="card" style="text-align:center">
+                    <form action="{% url 'sa:genralist' %}" method="post" id="stockForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h5>Search a ticker(AAPL,TSLA,SPY) for the latest stock analysis.</h5>
+
+                            <!-- <label for="name" class="label">Stock Ticker</label> -->
+                            <input class="form-control w-input " data-name="Name" required id="name"  name="ticker" placeholder="AAPL" type="text">
+                        </div>
+                        <div class="form-group">
+                            <h5 for="emailExclude ">Exclude results without email?</h5>
+                            <input class="" id="emailExclude" name="email_exclude " type="checkbox">
+                        </div>
+                        <div class="form-group">
+                            <input class="button button-primary w-button" id="analyzeBtn" type="submit" value="Analyze">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
+            <h1 class="text-right">Stockk Analyzer</h1>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Query/Number</th>
+                    <th>User Name</th>
+                    <th>Url</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+</div>
+
+{% if data %}
+<div class="app-main-layout-wrapper" style="padding:5px 4% 0px">
+    <div class="app-main-layout-content">
+        {% include 'web/price1.html' %}
+    </div>
+</div>
+
+<div class="app-main-layout-wrapper" style="padding:10px">
+    <div class="app-main-layout-content">
+        {% include 'web/price2.html' %}
+    </div>
+</div>
+
+<div class="app-main-layout-wrapper" style="padding:10px;margin-left:auto;margin-right:auto;">
+    <div class="app-main-layout-content">
+        {% include 'web/price3.html' %}
+    </div>
+</div>
+
+<div class="app-main-layout-wrapper" style="padding:10px">
+    <div class="app-main-layout-content">
+        {% include 'web/price4.html' %}
+    </div>
+</div>
+
+<div class="app-main-layout-wrapper" style="padding:10px">
+    <div class="app-main-layout-content">
+        {% include 'web/price5.html' %}
+    </div>
+</div>
+
+
+{% endif %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="application/javascript">
+
+         setInterval(function() {
+            $.ajax({
+                dataType: 'json',
+                type: 'GET',
+                contentType: 'json',
+                url: "/get-latest-Record/",
+                token :"{{csrf_token}}",
+                success: function(data) {
+                    $("tbody").empty();
+
+                        ///var stokKey = key;
+                        var stocKeyword = data.keyword;
+                        var StockAccountCount = data.account_count;
+                        var stockId = data.stock_id;
+                        var stockScreenName = data.screen_name;
+                        var stockUrl = data.url;
+                        var stockEmail = data.email;
+                        console.log("====== stock ========\t:",stocKeyword);
+                        $("tbody").before(`
+                                        <tr>
+                                            <td>${StockAccountCount}</td>
+                                            <td> ${stocKeyword}/${stockId}</td>
+                                            <td>${stockScreenName}</td>
+                                            <td>${stockUrl}</td>
+                                            <td>${stockEmail}</td>
+                                        </tr>`
+
+                                        )
+
+                },
+                error: function(data) {
+                    console.log("error")
+
+                }
+            })
+        }, 8000)
+
+</script>
+
+{% endblock %}
+

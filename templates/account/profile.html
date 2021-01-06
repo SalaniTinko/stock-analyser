@@ -1,0 +1,38 @@
+{% extends "web/app/app_base.html" %}
+{% block app %}
+<section class="section app-card">
+        <div class="column">
+            <h1 class="title is-size-4">My Details</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                    {{ form.email }}
+                  </div>
+                  {{ form.email.errors }}
+                </div>
+                <div class="field">
+                  <label class="label">First Name</label>
+                  <div class="control">
+                    {{ form.first_name }}
+                  </div>
+                  {{ form.first_name.errors }}
+                </div>
+                <div class="field">
+                  <label class="label">Last Name</label>
+                  <div class="control">
+                    {{ form.last_name }}
+                  </div>
+                  {{ form.last_name.errors }}
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <input class="button is-primary" type="submit" value="Save">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

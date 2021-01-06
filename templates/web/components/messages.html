@@ -1,0 +1,17 @@
+{% if messages %}
+    {% for message in messages %}
+    {% if message.level_tag == "success" %}
+    <div class="alert_6">
+    	{% else %}
+    	<div class="alert_{{message.level_tag}}">
+    {% endif %}
+
+
+
+  <div class="alert_content_wrap">
+    <div class="alert_line_2"></div>
+    <div class="paragraph-2-a">{{ message }}</div>
+</div>
+</div>
+    {% endfor %}
+{% endif %}

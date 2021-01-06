@@ -1,0 +1,60 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block body %}
+
+ <div class="app-main-layout-wrapper">
+          <div class="app-main-layout-content">
+<div class="fe07_services_temp04">
+    <div class="fe07_container">
+      <div class="fe07_title_wrap">
+        <p class="temp04_title">STOCKS&nbsp;JUST&nbsp;GOT&nbsp;EASY</p>
+        <h2 class="temp04_h2">The Stockk Platform<br>We make it easy</h2>
+      </div>
+
+      <div class="fe07_card_wrap">
+        <div class="fe07_card">
+
+        	<img src="{% static '/images/bar-chart.svg' %}" width="125" alt="" class="temp04_image">
+
+          <h4 class="temp04_h4">Stockk Analyzer</h4>
+
+          <p class="temp04_paragraph">Accelerate your development workflow with cloneable interface elements and components.</p>
+
+          <a href="/analyze" class="temp04_button w-button">GET&nbsp;STARTED&nbsp;NOW</a></div>
+
+        <div class="fe07_card">
+        	<img src="{% static '/images/slack.svg' %}" width="125" alt="" class="temp04_image">
+
+          <h4 class="temp04_h4">Stockk Slack</h4>
+          <p class="temp04_paragraph">Available only to our members, you'll join an elite group of traders.</p>
+
+          <a href="#" class="temp04_button w-button">GET&nbsp;STARTED&nbsp;NOW</a></div>
+
+        <div class="fe07_card">
+        	<img src="{% static '/images/percent.svg' %}" width="125" alt="" class="temp04_image">
+
+          <h4 class="temp04_h4">Options Calculator</h4>
+          <p class="temp04_paragraph">A familiar and easy tool that let's you make quick decisions on your trades.</p>
+
+          <a href="/options" class="temp04_button w-button">COMING SOON</a>
+
+      </div>
+      </div>
+    </div>
+    <div class="line_break"></div>
+  </div>
+
+
+{% include 'web/resource.html' %}
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+{% endblock %}

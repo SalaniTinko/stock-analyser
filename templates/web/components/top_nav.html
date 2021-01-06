@@ -1,0 +1,60 @@
+ 
+
+    <header class="forest_nav">
+      <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav03 w-nav">
+        <div class="nav03_container">
+          <div class="nav03_left">
+
+            <a href="#" class="nav03_logo w-nav-brand"><img src="/static/images/stockk.png" width="120" alt="" class="nav03_logo_image"></a>
+          </div>
+
+          <nav role="navigation" class="nav03_links w-nav-menu">
+
+            <a href="{% url 'web:home' %}" class="nav03_link w-nav-link">Home</a>
+
+
+            <a href="{% url 'web:analyze' %}" class="nav03_link w-nav-link">Analyzer</a>
+
+            <a href="{% url 'web:options' %}" class="nav03_link w-nav-link">Options</a>
+
+
+            <a href="{% url 'web:resources' %}" class="nav03_link w-nav-link">Resources</a>
+
+
+          </nav>
+          {% if user.is_authenticated %}
+
+
+          <div data-delay="0" class="dropdown-round w-dropdown" role="menu" aria-labelledby="w-dropdown-toggle-8" style=""><div class="dropdown_round w-dropdown-toggle" tabindex="0" id="w-dropdown-toggle-8" aria-controls="w-dropdown-list-8" aria-haspopup="menu" style="outline: none;"><div class="w-icon-dropdown-toggle"></div>
+
+
+          <div>Account</div></div>
+          <nav class="dropdown_list w-dropdown-list" id="w-dropdown-list-8">
+
+            <a href="{% url 'subscriptions:subscription_details' %}" class="dropdown_link w-dropdown-link" tabindex="-1" role="menuitem" style="outline: none;">Upgrade Account</a>
+
+            <a href="{% url 'account_change_password' %}" class="dropdown_link w-dropdown-link" tabindex="-1" role="menuitem" style="outline: none;">Change Password</a>
+
+            <a href="{% url 'account_logout' %}"  class="dropdown_link w-dropdown-link"  tabindex="-1" role="menuitem" style="outline: none;">Logout</a>
+                   
+
+        </a>
+          </nav></div>
+
+          {% else %}
+          <div class="nav03_right"><a href="{% url 'account_login' %}" class="nav03_button w-button">LOGIN</a>
+                      <div class="nav03_right"><a href="{% url 'account_signup' %}" class="nav03_button w-button">SIGN UP</a>
+
+
+            <div class="nav03_menu_button w-nav-button">
+              <div class="nav03_icon w-icon-nav-menu"></div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </header>
+  </div>
+
+  <!-- {% include 'web/components/messages.html' %} -->

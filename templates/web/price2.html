@@ -1,0 +1,219 @@
+<div class="section">
+                <div class="flex row w-row">
+
+                                  <div class="col w-col w-col-6">
+                    <div class="card">
+                      <div style="margin-bottom:5px;" class="card-heading">
+                        <h4>Price Target</h4>
+                        <p>Last updated {{data.pricetarget.updatedDate}}</p>
+                      </div>
+                      <!-- <div class="revenue-value text-center">$81333.89</div> -->
+                      <div class="balance-list">
+                        <div class="table">
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-8 w-col-small-8 w-col-tiny-8">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo bitcoin"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">Average</h4>
+                                  <!-- <div>USD</div> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4 w-col-small-4 w-col-tiny-4">
+                              <div class="currency-balance-text"><h4>${{data.pricetarget.priceTargetAverage}}</h4></div>
+                              <!-- <div>$138832.23</div> -->
+                            </div>
+                          </div>
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-8 w-col-small-8 w-col-tiny-8">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo bitcoin-cash"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">High</h4>
+                                  <!-- <div>USD</div> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4 w-col-small-4 w-col-tiny-4">
+                              <div class="currency-balance-text"><h4>${{data.pricetarget.priceTargetHigh}}</h4></div>
+                              <!-- <div>$138832.23</div> -->
+                            </div>
+                          </div>
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-8 w-col-small-8 w-col-tiny-8">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo ethereum"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">Low</h4>
+                                  <!-- <div>USD</div> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4 w-col-small-4 w-col-tiny-4">
+                              <div class="currency-balance-text"><h4>${{data.pricetarget.priceTargetLow}}</h4></div>
+                              <!-- <div>$138832.23</div> -->
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="margin-bottom:5px;" class="card-heading">
+                        <h4>Pricing & Volatility</h4>
+                      </div>
+                      
+                                              <div class="chart-symbols-item">
+                          <div class="chart-color blue"></div>
+                          <div class="chart-symbols-item-name"><h4>Volatility</h4></div>
+                          <div><h4>{{data.movement.beta}}<h4></div>
+                        </div>
+
+                        <div class="chart-symbols-item">
+                          <div style="background-color:#0a1f44; "class="chart-color"></div>
+                          <div class="chart-symbols-item-name"><h4>PE Ratio</h4></div>
+                          <div><h4>{{data.stats.peRatio}}</h4></div>
+                        </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col w-col w-col-6">
+
+                    <div class="card">
+                      <div style="margin-bottom:5px;" class="card-heading">
+                        <h4>Price Movement</h4>
+                      </div>
+                      <div class="balance-list">
+                        <div class="table">
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo bitcoin"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">Week</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$6,520.23</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right">
+                            {% if data.movement.1wchange > 0 %}
+                    <h4 style="color:#38cb89;">{{data.movement.1wchange}}% ↗</h4>
+                    {% else %}
+                    <h4 style="color:#fe3e3e;">{{data.movement.1wchange}}% ↘</h4>
+                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo bitcoin"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">1 Month</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$6,520.23</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right">
+                            {% if data.movement.1mchange > 0 %}
+                    <h4 style="color:#38cb89;">{{data.movement.1mchange}}% ↗</h4>
+                    {% else %}
+                    <h4 style="color:#fe3e3e;">{{data.movement.1mchange}}% ↘</h4>
+                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo bitcoin-cash"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">3 Month</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$333.89</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right">
+                            {% if data.movement.3mchange > 0 %}
+                    <h4 style="color:#38cb89;">{{data.movement.3mchange}}% ↗</h4>
+                    {% else %}
+                    <h4 style="color:#fe3e3e;">{{data.movement.3mchange}}% ↘</h4>
+                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo ethereum"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">6 Month</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$219.84</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right">
+                                                          {% if data.movement.6mchange > 0 %}
+                    <h4 style="color:#38cb89;">{{data.movement.6mchange}}% ↗</h4>
+                    {% else %}
+                    <h4 style="color:#fe3e3e;">{{data.movement.6mchange}}% ↘</h4>
+                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+
+                                                    <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo ethereum"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">52W High</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$219.84</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right"><h4 style="color:#38cb89;">${{data.stats.1yhigh}}</span></div>
+                            </div>
+                          </div>
+                                 <div class="row table-row flex-center w-row">
+                            <div class="col table-col w-col w-col-4">
+                              <div class="currency-balance-item">
+                                <!-- <div class="currency-logo ethereum"></div> -->
+                                <div>
+                                  <h4 class="currency-short-name">52W Low</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col table-col align-right w-col w-col-4">
+                              <!-- <div class="currency-balance-text">$219.84</div> -->
+                            </div>
+                            <div class="w-col w-col-4">
+                              <div class="align-right"><h4 style="color:#fe3e3e;">${{data.stats.1ylow}}</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>

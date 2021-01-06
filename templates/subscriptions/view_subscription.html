@@ -1,0 +1,40 @@
+{% extends "web/app/app_base.html" %}
+{% load static %}
+{% block app %}
+<div style="text-align:center;padding:10px 5%;" class="p01">
+    <div class="p01_container">
+      <div class="p01_title_wrap">
+        <p class="fe06_title">Subscription</p>
+        <h3 class="p01_h3">You're a member of <span class="c01_focus_colour">Stockk Premium.</span></h3>
+        <h6>Thank you for being a member. You can find your subscription details below.</h6>
+      </div>
+      <div style="text-align:center" class="p05">
+
+         <h4>Current Subscription: {{ product.metadata.name }}</h4>
+               <h6>Member Since: {{ subscription.start.date }}</h6>
+              <h6>Price:  {{ subscription.plan.human_readable_price }}</h6>
+               <h6>Next payment: {{ friendly_payment_amount }} on {{ subscription.current_period_end.date }}</h6>
+             
+                              
+      </div>
+</div>
+</div>
+
+<div style="text-align:center;padding:10px 5%;" class="p01">
+    <div  class="p01_container">
+ <div style="margin-left:auto;margin-right:auto;" class="c04_block_center">
+          {% if subscription %}
+           <form  method="POST" action="{{ subscription_urls.create_stripe_portal_session }}">
+             {% csrf_token %}
+<button type="submit" id="subscribe-button" class="button_success_round w-button">Manage Billing</button>
+          </form>
+        </div>
+        {% elif subscription.cancel_at_period_end %}
+        <h4>
+            Your current subscription will expire on {{ subscription.current_period_end.date }}.
+          </h4>
+        {% endif %}
+        </div>
+
+
+{% endblock %}

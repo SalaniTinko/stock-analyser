@@ -1,0 +1,78 @@
+{% block body %}
+{% load static %}
+<div class="section">
+                <div class="flex row w-row">
+                  <div class="col w-col w-col-4">
+                    <div class="card">
+                      <div class="card-heading small">
+                        <h4 style="margin-left:auto;margin-right:auto;">Stock Trend</h4>
+                      </div>
+                      <div class="flex-center">
+
+{% if data.movement.50mavg > data.movement.200mavg %}
+                          <div style="color:#38cb89;" class="revenue-value">
+                            <img style="width:200px;height:200px;" src="{% static 'images/bull.svg' %}">
+
+                            Bullish
+
+                          </div></div>
+                      <div class="revenue-description hint">Golden Cross Signal</div>
+            {%else%}
+                                  <div style="color:#fe3e3e;" class="revenue-value">
+                                    <img style="width:200px;height:200px;" src="{% static 'images/bear.svg' %}">
+
+
+                                  Bearish
+
+                          </div></div>
+{% endif %}
+                    </div>
+                  </div>
+                  <div class="col w-col w-col-4">
+                    <div class="card">
+                      <div class="card-heading small">
+                        <h4 style="margin-left:auto;margin-right:auto;">Trend Signal</h4>
+
+
+                      </div>
+                      <div class="flex-center">
+        {% if data.price > data.technical.20sma %}
+                      <div style="color:#38cb89;" class="revenue-value"><img style="width:200px;height:200px;" src="{% static 'images/arrow-up.svg' %}">
+                      Upward</div>  </div>
+            {%else%}
+                      <div style="color:#fe3e3e;" class="revenue-value"><img style="width:200px;height:200px;" src="{% static 'images/arrow-down.svg' %}">
+                        Downward
+                      </div>  </div>
+                  
+                    
+            {% endif %}
+                    </div>
+                  </div>
+
+                  <div class="col w-col w-col-4">
+                    <div class="card">
+                      <div class="card-heading small">
+                        <h4 style="margin-left:auto;margin-right:auto;">RSI</h4>
+                      </div>
+                      <div class="flex-center">
+                        
+            {% if data.technical.rsi > 70 %}
+                        <div style="color:#ffab00;" class="revenue-value"><img style="width:200px;height:200px;" src="{% static 'images/fire.svg' %}">Hot
+
+                        </div>
+                      </div>
+                      <div class="revenue-description hint">Good time to sell</div>
+                {% elif data.technical.rsi < 30 %}
+                        <div style="color:#3898ec;" class="revenue-value"><img style="width:200px;height:200px;" src="{% static 'images/cold.svg' %}">Cold</div>
+
+                      </div>Good time to buy</div>
+                {% else %}
+                        <div class="revenue-value"><img style="width:200px;height:200px;" src="{% static 'images/activity.svg' %}">Stable</div>
+                      </div>
+            {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+{% endblock %}

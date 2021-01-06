@@ -1,0 +1,13 @@
+{% block body%}
+<div class="section">
+<div class="card">
+    <div class="content">
+        <h3>Latest Headlines</h3>
+        {% for new in data.news %}
+        <p>{{new.source}}: <a href="{{new.url}}" class="custom-link"> {{new.headline}} </a></p>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
+

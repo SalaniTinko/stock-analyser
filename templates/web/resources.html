@@ -1,0 +1,16 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block body %}
+
+
+<div style="padding:25px" class="module_wrap">
+<h1>Stock Market Resources</h1>
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+ <!-- <div class="app-main-layout-wrapper"> -->
+          <!-- <div class="app-main-layout-content"> -->
+   
+{% include 'web/resource.html' %}
+
+
+
+{% endblock %}

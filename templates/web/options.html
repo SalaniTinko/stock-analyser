@@ -1,0 +1,73 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block body %}
+
+{% block js %}
+    <script src="{% static 'js/options.js' %}" defer></script>
+{% endblock %}
+
+<script>const theOptions = "{{options|safe}}"; const sharePrice = "{{ price }}"; const stockCode = "{{ code }}"; const incomingToken = "{{ csrf_token }}";</script>
+
+<input type="hidden" name="csrf-token" id="csrf-token" value="{{ csrf_token }}" />
+
+<!--is invisible until opened-->
+<div id="contract-editor" class="modal invisible-while-loading" style="display: none;">
+<!--    FIXME: modal displays for a split second while the page loads. Start the modal with "display: none" to fix. (or use alt solution? maybe put the style inline so it loads first w/ the html?) -->
+  <!-- Modal content -->
+{% include "web/optionsmod.html" %}
+</div>
+
+<div style="padding:25px" class="module_wrap">
+<h1>Options Profit Calculator</h1>
+<link rel="stylesheet" href="{% static 'css/stock.css' %}">
+ <div class="app-main-layout-wrapper">
+          <div class="app-main-layout-content">
+            <div class="section">
+              <div style="text-align:center" class="card">
+                <h5>Pick a stock to view potential options</h5>
+        <form style="text-align:center" method="POST" id="email-form" name="email-form" data-name="Email Form">
+          {% csrf_token %}
+          <label for="name" class="label">Stock Ticker</label>
+          <input type="text" style="center" class="input w-input" maxlength="4" name="ticker" data-name="Name" placeholder="AAPL" id="name">
+         <input class="button button-primary w-button" type="submit" value="Analyze">
+        </form>
+              </div>
+                <div id="call-put-select">
+                    <div class="w-row">
+                        <div class="w-col w-col-6"><a href="#" id="call-btn" class="button button-group-item button-block button-primary w-button">Call</a></div>
+                        <div class="w-col w-col-6"><a href="#" id="put-btn" class="button button-group-item button-block button-primary w-button">Put</a></div>
+                    </div>
+                </div>
+
+<div data-delay="0" class="dropdown w-dropdown">
+  <div class="button-dropdown w-dropdown-toggle" id="w-dropdown-toggle-4" aria-controls="w-dropdown-list-4" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+      <div class="w-icon-dropdown-toggle">
+      </div>
+      <span id="exp-dates-selector">Expiration Dates</span>
+  </div>
+    <nav class="dropdown-list w-dropdown-list" id="w-dropdown-list-4" aria-labelledby="w-dropdown-toggle-4">
+        {% for option in options%}
+        <a href="#" id="expires-{{option.expirationDate}}"class="dropdown-link w-dropdown-link" tabindex="0">{{option.expirationDate}}</a>
+        {% endfor %}
+    </nav>
+</div>
+
+
+            </div>
+</div>
+</div>
+</div>
+
+ <div style="padding:10px" class="app-main-layout-wrapper">
+          <div class="app-main-layout-content">
+{% include "web/calc.html" %}
+</div>
+</div>
+
+ <div style="padding:10px" class="app-main-layout-wrapper">
+          <div class="app-main-layout-content">
+
+</div>
+</div>
+
+{% endblock %}

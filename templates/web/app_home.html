@@ -1,0 +1,36 @@
+{% extends "web/app/app_base.html" %}
+{% load static %}
+{% block app %}
+
+<div style="padding:25px" class="module_wrap">
+<h4>👋Hey there, {{user.email}}!</h4>
+<!-- <link rel="stylesheet" href="{% static 'css/stock.css' %}"> -->
+ <div style="padding:5px 4% 0px" class="app-main-layout-wrapper">
+          <div class="app-main-layout-content">
+            <div style="text-align:center" class="section">
+              <div style="text-align:center" class="card">
+
+              	<h6>Thanks for signing up!</h6>
+              	<h6>Join our premium membership! Members get:</h6>
+                <br>
+              	<h6><img src="{% static '/images/check-circle.svg' %}" width="24" alt="" class="check-icon">Unlimited access to Stockk Analyzer</h6>
+                <br>
+                <h6><img src="{% static '/images/check-circle.svg' %}" width="24" alt="" class="check-icon">Unlimited access to Stockk Options Calculator</h6>
+                <br>
+              	<h6><img src="{% static '/images/check-circle.svg' %}" width="24" alt="" class="check-icon">Early access to future Stockk tools & features</h6>
+                <br>
+              	<h6><img src="{% static '/images/check-circle.svg' %}" width="24" alt="" class="check-icon">Access to the Stockk Slack Channel</h6>
+
+  
+                <a style="display:inline-block" href="{% url 'subscriptions:subscription_details' %}" class="button-p-round w-button">Subscribe</a>
+            
+
+              </div>
+            </div>
+		   </div>
+</div>
+</div>
+      
+
+{% endblock %}
+
